@@ -1,7 +1,9 @@
 import AnimeList from "@/components/KitsuApi";
+import "../styles/global.css"
 
-export default function Home() {
+ function App() {
   return (
     <AnimeList/>
   );
 }
+export default App;

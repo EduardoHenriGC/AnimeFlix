@@ -1,7 +1,7 @@
-"use client"
+'use client';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import styles from '../../styles/AnimeList.module.css'
+import styles from '../../styles/AnimeList.module.css';
 
 const AnimeList = () => {
   const [categorias, setCategorias] = useState([]);
@@ -10,15 +10,15 @@ const AnimeList = () => {
 
   const traducaoCategorias = {
     'Middle School': 'Ensino Médio',
-    'Cycling': 'Ciclismo',
+    Cycling: 'Ciclismo',
     'Elementary School': 'Ensino Fundamental',
-    'Mermaid': 'Sereia',
-    'Android': 'Android',
+    Mermaid: 'Sereia',
+    Android: 'Android',
     'All Girls School': 'Escola para Meninas',
-    'Vampire': 'Vampiro',
-    'Wrestling': 'Luta Livre',
-    'Samurai': 'Samurai',
-    'Elf': 'Elfo',
+    Vampire: 'Vampiro',
+    Wrestling: 'Luta Livre',
+    Samurai: 'Samurai',
+    Elf: 'Elfo',
   };
 
   useEffect(() => {
@@ -36,7 +36,9 @@ const AnimeList = () => {
       });
       const data = await response.json();
 
-      const categorias = data.data.map(categoria => categoria.attributes.title);
+      const categorias = data.data.map(
+        (categoria) => categoria.attributes.title,
+      );
       setCategorias(categorias);
     } catch (error) {
       console.error('Erro ao carregar categorias:', error);
@@ -45,22 +47,27 @@ const AnimeList = () => {
 
   const carregarAnimesPorCategoria = async (categoria) => {
     try {
-      const response = await fetch(`https://kitsu.io/api/edge/anime?filter[categories]=${categoria}&page[limit]=20`
-      , {
-        headers: {
-          'X-RapidAPI-Key': 'SIGN-UP-FOR-KEY',
-          'X-RapidAPI-Host': 'animenewsnetwork.p.rapidapi.com',
+      const response = await fetch(
+        `https://kitsu.io/api/edge/anime?filter[categories]=${categoria}&page[limit]=20`,
+        {
+          headers: {
+            'X-RapidAPI-Key': 'SIGN-UP-FOR-KEY',
+            'X-RapidAPI-Host': 'animenewsnetwork.p.rapidapi.com',
+          },
         },
-      });
+      );
       const data = await response.json();
-      console.log(data)
+      console.log(data);
 
-      const animes = data.data.map(anime => anime);
+      const animes = data.data.map((anime) => anime);
       setAnimes(animes);
-      console.log(animes)
+      console.log(animes);
       setCategoriaSelecionada(traducaoCategorias[categoria] || categoria);
     } catch (error) {
-      console.error(`Erro ao carregar animes da categoria ${categoria}:`, error);
+      console.error(
+        `Erro ao carregar animes da categoria ${categoria}:`,
+        error,
+      );
     }
   };
 
@@ -69,8 +76,11 @@ const AnimeList = () => {
       <h1>Animes por Categoria</h1>
 
       <div>
-        {categorias.map(categoria => (
-          <button key={categoria} onClick={() => carregarAnimesPorCategoria(categoria)}>
+        {categorias.map((categoria) => (
+          <button
+            key={categoria}
+            onClick={() => carregarAnimesPorCategoria(categoria)}
+          >
             {traducaoCategorias[categoria] || categoria}
           </button>
         ))}
@@ -80,13 +90,16 @@ const AnimeList = () => {
         <div className={styles.animeContent}>
           <h2>Animes da Categoria: {categoriaSelecionada}</h2>
           <ul>
-          {animes.map(anime => (
+            {animes.map((anime) => (
               <li key={anime.id} className={styles.animeItem}>
                 <Link href={`/anime/${anime.id}`}>
-                  
-                    <p>{anime.attributes.titles.en_jp}</p>
-                    <img className={styles.img} src={anime.attributes.posterImage.small} width={180} alt={`${anime.attributes.titles.en_jp} Poster`} />
-                  
+                  <p>{anime.attributes.titles.en_jp}</p>
+                  <img
+                    className={styles.img}
+                    src={anime.attributes.posterImage.small}
+                    width={180}
+                    alt={`${anime.attributes.titles.en_jp} Poster`}
+                  />
                 </Link>
               </li>
             ))}

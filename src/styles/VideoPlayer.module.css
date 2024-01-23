@@ -1,0 +1,81 @@
+.videoContainer {
+  width: 900px; /* Defina a largura desejada */
+  max-width: 900px; /* Defina a largura máxima desejada, se necessário */
+  height: auto; /* A altura será ajustada automaticamente com base na largura */
+  margin: 0 auto; /* Centraliza o componente na página, se necessário */
+  background-color: black;
+  max-height: 500px;
+}
+
+.Container {
+  display: flex;
+  width: 91%;
+  margin: 50px auto;
+}
+
+.desc {
+  width: 20%;
+  display: flex;
+  align-items: center;
+
+  flex-direction: column;
+  text-align: center;
+  font-size: 1.1rem;
+}
+.ep {
+  width: 25%;
+}
+
+.btn {
+  background-color: #777;
+  width: 38px;
+  height: 25px;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  margin: 2px;
+  color: #fff;
+}
+
+.poster {
+  width: 100%;
+
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  transition: transform 0.4s ease-in-out;
+  transform: scale(1);
+}
+
+.poster:hover {
+  transform: scale(1.05); /* Aumenta um pouco ao passar o mouse */
+}
+
+.poster img {
+  width: 100%;
+  height: 350px;
+}
+
+.posterImage {
+  border-radius: 0.5rem;
+}
+.desc h1 {
+  color: gold;
+}
+.statusOn {
+  text-transform: uppercase;
+  color: green;
+  font-weight: 600;
+}
+.statusOff {
+  text-transform: uppercase;
+  color: red;
+  font-weight: 600;
+}
+
+.btnAudio {
+  padding: 10px;
+  margin: 5px;
+  border-radius: 0.5rem;
+  border: none;
+  min-width: 100px;
+  cursor: pointer;
+}

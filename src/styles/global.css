@@ -1,0 +1,14 @@
+html,body{
+    margin: 0;
+    padding: 0;
+    background-color: #222224;
+    overflow-x: hidden;
+    
+}
+
+p,a{
+    color: #fff;
+}
+a{
+    text-decoration: none;
+}

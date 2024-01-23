@@ -1,9 +1,6 @@
 import ReactPlayer from 'react-player';
 
 const VideoPlayer = ({ videoUrl, subtitleUrl, subtitleLang }) => {
-
-    
-
   return (
     <div>
       <ReactPlayer
@@ -24,7 +21,6 @@ const VideoPlayer = ({ videoUrl, subtitleUrl, subtitleLang }) => {
           },
         }}
       />
-
     </div>
   );
 };

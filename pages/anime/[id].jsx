@@ -53,7 +53,7 @@ const AnimeDetails = () => {
 
   const carregarUrlVideo = async (animeId) => {
     try {
-      const response = await fetch(`http://localhost:3000/api/${animeId}?index=${indexVideo}`, {
+      const response = await fetch(`https://anime-flix-eight-azure.vercel.app/${animeId}?index=${indexVideo}`, {
        });
 
       const data = await response.json();

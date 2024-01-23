@@ -1,0 +1,38 @@
+.container div ul li{
+    list-style: none;
+
+
+}
+.img{
+    border-radius: 7px;
+    
+    
+}
+.animeContent ul{
+
+    display: flex;
+    gap: 20px;
+    
+   
+    align-items: center;
+    flex-wrap: wrap;
+    
+}
+
+.animeItem{
+    display: flex;
+    flex-direction: column;
+    
+    
+}
+.animeItem p{
+ 
+    height: 65px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 180px;
+    
+    
+}

@@ -1,29 +1,29 @@
 .videoContainer {
-  width: 900px; /* Defina a largura desejada */
-  max-width: 900px; /* Defina a largura máxima desejada, se necessário */
+  width: 100%; /* Defina a largura desejada */
+
   height: auto; /* A altura será ajustada automaticamente com base na largura */
   margin: 0 auto; /* Centraliza o componente na página, se necessário */
-  background-color: black;
-  max-height: 500px;
 }
 
 .Container {
-  display: flex;
-  width: 91%;
+  display: grid;
+  grid-template-rows: repeat(1, 1fr);
+  grid-template-columns: 2fr 7fr 3fr;
+  width: 80%;
   margin: 50px auto;
+  gap: 40px;
 }
 
 .desc {
-  width: 20%;
+  width: 100%;
   display: flex;
   align-items: center;
-
   flex-direction: column;
   text-align: center;
-  font-size: 1.1rem;
+  font-size: 1rem;
 }
 .ep {
-  width: 25%;
+  width: 100%;
 }
 
 .btn {
@@ -41,12 +41,6 @@
 
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
-  transition: transform 0.4s ease-in-out;
-  transform: scale(1);
-}
-
-.poster:hover {
-  transform: scale(1.05); /* Aumenta um pouco ao passar o mouse */
 }
 
 .poster img {
@@ -78,4 +72,103 @@
   border: none;
   min-width: 100px;
   cursor: pointer;
+}
+.TypeAudioContainer {
+  margin: 15px 0;
+}
+.ContainerFreeze h2 {
+  color: red;
+  font-size: 2rem;
+  text-align: center;
+}
+
+@media (max-width: 1600px) {
+  .Container {
+    width: 96%;
+  }
+}
+@media (max-width: 1260px) {
+  .Container {
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: 1fr 10fr 1fr;
+  }
+
+  .videoContainer {
+    grid-row: 1;
+    grid-column: 2 / span 2;
+  }
+
+  .desc {
+    grid-row: 1/4;
+    grid-column: 1;
+  }
+
+  .ep {
+    grid-row: 2;
+    grid-column: 2 / span 2;
+  }
+}
+
+@media (max-width: 1000px) {
+  .Container {
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: 1fr;
+    height: 1250px;
+  }
+
+  .videoContainer {
+    grid-row: 1;
+    grid-column: 1/4;
+    width: 100%; /* Define a largura como 100% para ocupar a linha inteira na versão mobile */
+
+    height: auto;
+  }
+
+  .desc {
+    grid-row: 2;
+    grid-column: 1/2;
+    font-size: 0.8rem;
+  }
+
+  .ep {
+    grid-row: 2;
+    grid-column: 2/4;
+    width: 290px;
+  }
+}
+
+@media (max-width: 700px) {
+  .Container {
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: 1fr;
+    height: 1400px;
+    width: 100%;
+  }
+
+  .videoContainer {
+    grid-row: 2;
+    grid-column: 1;
+    width: 100%; /* Ocupa a largura completa da linha */
+    height: auto;
+  }
+
+  .desc {
+    grid-row: 1;
+    grid-column: 1;
+    font-size: 0.8rem;
+  }
+
+  .ep {
+    grid-row: 3;
+    grid-column: 1;
+    width: 90%; /* Ocupa a largura completa da linha */
+
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 300px) {
+  .synopsis {
+    width: 80%;
+  }
 }

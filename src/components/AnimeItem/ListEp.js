@@ -12,7 +12,6 @@ export default function ListEp({
 }) {
   return (
     <div className={styles.ep}>
-      <label htmlFor="episodeDropdown">Selecione a faixa de episódios:</label>
       <select
         id="episodeDropdown"
         onChange={handleDropdownChange}
@@ -46,10 +45,7 @@ export default function ListEp({
           );
         },
       )}
-      <div>
-        <p>
-          Você está assistindo episódio {currentEp} de {anime.slug}
-        </p>
+      <div className={styles.TypeAudioContainer}>
         {data.url && (
           <button
             className={styles.btnAudio}
@@ -67,6 +63,9 @@ export default function ListEp({
           </button>
         )}
       </div>
+      <p>
+        Você está assistindo episódio {currentEp} de {anime.slug}
+      </p>
     </div>
   );
 }

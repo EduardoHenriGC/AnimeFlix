@@ -6,6 +6,7 @@ import ListEp from '@/components/AnimeItem/ListEp';
 import Desc from '@/components/AnimeItem/Desc';
 import Poster from '@/components/AnimeItem/Poster';
 import Video from '@/components/AnimeItem/Video';
+import FreezeVideo from '@/components/FreezeVideo';
 
 const AnimeDetails = () => {
   const router = useRouter();
@@ -20,7 +21,7 @@ const AnimeDetails = () => {
   const [status, setStatus] = useState(false);
   const [data, setData] = useState(null);
 
-  const episodesPerRange = 100; // Defina o número de episódios por faixa
+  const episodesPerRange = 50; // Defina o número de episódios por faixa
 
   const calculateDropdownOptions = () => {
     const options = anime
@@ -104,12 +105,16 @@ const AnimeDetails = () => {
       <Poster anime={anime} />
       <div className={styles.Container}>
         <Desc anime={anime} status={status} />
-        <Video
-          anime={anime}
-          currentEp={currentEp}
-          UrlLegenda={UrlLegenda}
-          UrlVideo={UrlVideo}
-        />
+        {UrlVideo ? (
+          <Video
+            anime={anime}
+            currentEp={currentEp}
+            UrlLegenda={UrlLegenda}
+            UrlVideo={UrlVideo}
+          />
+        ) : (
+          <FreezeVideo />
+        )}
         <ListEp
           selectedOption={selectedOption}
           dropdownOptions={dropdownOptions}
@@ -118,6 +123,7 @@ const AnimeDetails = () => {
           anime={anime}
           setUrlVideo={setUrlVideo}
           data={data}
+          currentEp={currentEp}
         />
       </div>
     </div>

@@ -11,7 +11,7 @@ export default function Desc({ anime, status }) {
       <p className={status ? styles.statusOn : styles.statusOff}>
         {status ? 'Disponível' : 'Indisponível'}
       </p>
-      <p>{anime?.synopsis}</p>
+      <p className={styles.synopsis}>{anime?.synopsis}</p>
     </div>
   );
 }

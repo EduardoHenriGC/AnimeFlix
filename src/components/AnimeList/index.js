@@ -1,5 +1,5 @@
-// AnimeList.js
 'use client';
+// AnimeList.js
 import { useEffect, useState, useRef } from 'react';
 import styles from '@/styles/AnimeList.module.css';
 import Link from 'next/link';
@@ -11,17 +11,32 @@ const AnimeList = ({ category }) => {
   useEffect(() => {
     const getAnimesByCategory = async () => {
       try {
-        const apiUrl = `https://kitsu.io/api/edge/anime?sort=${category}&page[limit]=20&page[offset]=0`;
-        const response = await fetch(apiUrl);
+        // Tentar obter os dados do armazenamento local usando a chave única para cada categoria
+        const storedData = localStorage.getItem(`cachedAnimes_${category}`);
 
-        if (response.ok) {
-          const data = await response.json();
-          setAnimes(data.data);
+        if (storedData) {
+          // Se os dados estiverem no armazenamento local, usar esses dados
+          setAnimes(JSON.parse(storedData));
         } else {
-          console.error(
-            'Erro ao obter dados da API do Kitsu:',
-            response.status,
-          );
+          // Se não houver dados no armazenamento local, fazer a requisição para a API
+          const apiUrl = `https://kitsu.io/api/edge/anime?sort=${category}&page[limit]=20&page[offset]=0`;
+          const response = await fetch(apiUrl);
+
+          if (response.ok) {
+            const data = await response.json();
+            setAnimes(data.data);
+
+            // Salvar os dados no armazenamento local para uso futuro
+            localStorage.setItem(
+              `cachedAnimes_${category}`,
+              JSON.stringify(data.data),
+            );
+          } else {
+            console.error(
+              'Erro ao obter dados da API do Kitsu:',
+              response.status,
+            );
+          }
         }
       } catch (error) {
         console.error('Erro na requisição para a API do Kitsu:', error.message);
